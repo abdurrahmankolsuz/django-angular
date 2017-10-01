@@ -1,0 +1,19 @@
+<div class="panel panel-primary" *ngIf="post">
+    <div class="panel-body">
+        <h2>
+            <a href="#">{{post.title}}</a>
+        </h2>
+        <p class="lead">
+            by <a href="index.php">Start Bootstrap</a>
+        </p>
+        <p><span class="glyphicon glyphicon-calendar"></span> Posted on August 28, 2013 at 10:00 PM</p>
+        <hr>
+        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+        <hr>
+        <p>{{post.body}}</p>
+        <hr>
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+    </div>
+
+
+</div>
