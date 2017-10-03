@@ -23,8 +23,8 @@ export class PostComponent implements OnInit {
    error: any;
    posts : Observable<Post[]>;
 
-   @Input()
-   searchBox : string;
+  //  @Input()
+  //  msg : string;
 
   constructor(private postService: PostService) {
     

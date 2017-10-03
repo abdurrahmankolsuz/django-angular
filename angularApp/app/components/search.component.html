@@ -3,7 +3,7 @@
     <form action="" class="search-form">
         <div class="form-group has-feedback">
             <label for="search" class="sr-only">Search</label>
-            <input (keyup)="onKey($event)" type="text" class="form-control" name="search" id="search" placeholder="e.g. software..">
+            <input #searchBox (keyup)="0" type="text" class="form-control" name="search" id="search" placeholder="e.g. software..">
             <span class="glyphicon glyphicon-search form-control-feedback"></span>
         </div>
     </form>

@@ -11,11 +11,9 @@ import { PostService } from '../services/postService'
 
 
 export class SearchComponent implements OnInit {
+	
 
-  // @Input() 
-	// searchBox : string;	
-
-  @Output()searchBox: EventEmitter<string>  = new EventEmitter<string>();
+ // @Output()searchBox: EventEmitter<string>  = new EventEmitter<string>();
   
    
    posts : Post[];
@@ -27,12 +25,12 @@ export class SearchComponent implements OnInit {
    }
 
   ngOnInit() {
- 
-  }
-onKey(event: any) { // without type info
-   this.searchBox.emit += event.target.value ;
 
-}
+  }
+// onKey(event: any) { // without type info
+
+//    this.searchBox.emit += event.target.value ;
+// }
 
 
 }  

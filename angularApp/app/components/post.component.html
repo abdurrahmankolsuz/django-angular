@@ -1,16 +1,26 @@
-<input type="text" #searchBox (keyup)="0" placeholder="Search to type">
+<!--<input type="text" #searchBox (keyup)="0" placeholder="Search to type">-->
+<div class="row">
+    <div style="float:left" class="col-lg-6">
+        <span href="#menu-toggle" class="glyphicon glyphicon-menu-hamburger" id="menu-toggle"></span>
+    </div>
+    <div style="float:right" class="col-lg-4">
+        <form action="" class="search-form">
+            <div class="form-group has-feedback">
+                <label for="search" class="sr-only">Search</label>
+                <input #searchBox (keyup)="0" type="text" class="form-control" name="search" id="search" placeholder="e.g. software..">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+        </form>
+    </div>
+</div>
 <div *ngFor="let post of posts | FilterPipe:searchBox.value">
     <h2>
-        <p>{{searchBox}}</p>
         <a [routerLink]="post.id">{{post.title}}</a>
     </h2>
-    <p class="lead">
-        by <a href="index.php">Start Bootstrap</a>
-    </p>
     <p><span class="glyphicon glyphicon-calendar"></span> Posted on August 28, 2013 at 10:00 PM</p>
     <hr>
-    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-    <hr>
+    <!--<img class="img-responsive" src="http://placehold.it/900x300" alt="">
+    <hr>-->
     <p>{{post.body}}</p>
     <a class="btn btn-primary" [routerLink]="post.id">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 

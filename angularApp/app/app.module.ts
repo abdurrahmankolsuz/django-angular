@@ -4,7 +4,7 @@ import { HttpModule }    from '@angular/http';
 import { FormsModule }    from '@angular/forms';
 import {FilterPipe} from './pipes'
 
-
+import { DisqusModule } from 'angular2-disqus';
 
 import { AppComponent } from './app.component';
 import { PostComponent } from './components/post.component';
@@ -28,7 +28,7 @@ import {routing} from './app.routing'
 
 
 @NgModule({
-  imports:      [ BrowserModule , HttpModule , FormsModule,routing],
+  imports:      [ BrowserModule , HttpModule , DisqusModule,FormsModule,routing],
   declarations: [ AppComponent ,PostComponent ,CategoryComponent,AboutComponent,PageContentWrapperComponent
   ,SidebarWrapperComponent,SocialComponent,SearchComponent,ContainerComponent,PostDetailComponent,FilterPipe],
   bootstrap:    [ AppComponent],

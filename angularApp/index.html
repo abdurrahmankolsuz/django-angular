@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
     <meta charset="utf-8">
     <title>Abdurrahman Kolsuz</title>
 
@@ -20,16 +21,14 @@
     <script src="js/jquery.js"></script>
     <script src="js/index.js"></script>
 
+    <!--<script src="js/nprogress.js"></script>-->
+    <link href="css/nprogress.css" rel="stylesheet" />
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    <!-- Menu Toggle Script -->
-    <!--<script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>-->
+
+
     <!-- Custom CSS -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
 
@@ -41,22 +40,56 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
 
     <script src="systemjs.config.js"></script>
+
+
     <script>
         System.import('app').catch(function(err) {
             console.error(err);
         });
+
+
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $({
+                property: 0
+            }).animate({
+                property: 105
+            }, {
+                duration: 2000,
+                step: function() {
+                    var _percent = Math.round(this.property);
+                    $('#progress').css('width', _percent + "%");
+                    if (_percent == 105) {
+                        $("#progress").addClass("done");
+                    }
+                }
+            });
+        });
     </script>
 
 
+
 </head>
+
+<div id="progress" class="waiting">
+    <dt></dt>
+    <dd></dd>
+</div>
 
 <body>
 
     <div id="wrapper">
 
-
         <base href="/">
         <my-app></my-app>
+
+        <script src="//angular2disqustest.disqus.com/embed.js"></script>
         <!-- Sidebar -->
 
 
@@ -69,6 +102,9 @@
     </div>
     <!-- /#wrapper -->
 </body>
+<!-- Menu Toggle Script -->
+<script>
+</script>
 
 
 </html>

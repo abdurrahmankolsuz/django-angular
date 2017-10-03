@@ -7,10 +7,7 @@ import { Component,Input } from '@angular/core';
 })
 export class ContainerComponent  {
  
-//  @Input()
-  searchBox : string;
+  // @Input() searchBox : string;
   ngOnInıt()
-{
-  this.searchBox = "deneme";
-}
+{}
 }
