@@ -15,6 +15,29 @@
                 return false;
             });
 
+//loader
+
+ $({
+                property: 0
+            }).animate({
+                property: 105
+            }, {
+                duration: 2000,
+                step: function() {
+                    var _percent = Math.round(this.property);
+                    $('#progress').css('width', _percent + "%");
+                    if (_percent == 105) {
+                        $("#progress").addClass("done");
+                    }
+                }
+            });
+
+
+   $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+
             $('#back-to-top').tooltip('show');
 
         });

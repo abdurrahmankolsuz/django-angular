@@ -5,9 +5,11 @@ import { PostService } from './services/postService';
 
 @Component({
   selector: 'my-app',
-  template: `<sidebar-wrapper></sidebar-wrapper>
+  template: `
+  <div id="wrapper">
+  <sidebar-wrapper></sidebar-wrapper>
   <page-content-wrapper></page-content-wrapper>
- `,
+ </div>`,
   providers: [PostService]
 })
 export class AppComponent  {
