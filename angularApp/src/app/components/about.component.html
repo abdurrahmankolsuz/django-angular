@@ -1,14 +1,22 @@
-<div class="row">
-    <div style="float:left" class="col-lg-6">
+<!--<div class="row">-->
+<!--<div style="float:left" class="col-lg-6">
         <span href="#menu-toggle" class="glyphicon glyphicon-menu-hamburger" id="menu-toggle"></span>
+    </div>-->
+<div class="container-fluid">
+    <div class="navbar-header" style="padding-bottom: 10px; padding-right:30px;">
+        <button routerLink="/" type="button" class="btn btn-default navbar-btn pull-left">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </button>
     </div>
 </div>
+
+<!--</div>-->
 <div class="well">
     <h4>About Me</h4>
     <div class="row">
         <div class="col-lg-12">
             <p class="lead"></p>
-            <div class="well" [innerHTML]="about[0].content">
+            <div class="well" style="background-color:white;" [innerHTML]="about[0].content">
 
             </div>
         </div>

@@ -129,6 +129,7 @@ CKEDITOR_CONFIGS = {
             'autoembed',
             'embedsemantic',
             'autogrow',
+            'codesnippet',
             # 'devtools',
             'widget',
             'lineutils',

@@ -14,6 +14,7 @@ class About(models.Model):
 class Post(models.Model):
 
     title = models.CharField(_('Başlık'), max_length=50)
+    short_content = models.CharField(_('Short Content'), max_length=250)
     content = RichTextField(config_name='awesome_ckeditor')
     slug = models.SlugField(_('Slug'), max_length=200, unique=True)
     tags = TaggableManager()

@@ -32,8 +32,10 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^posts/$', views.post_list),
+    url(r'^tags/$', views.tag_list),
     url(r'^abouts/$', views.about_list),
     url(r'^posts/(?P<slug>[\w-]+)$', views.post_detail),
+    url(r'^tags/(?P<slug>[\w-]+)$', views.tag_filter),
     url(r'^$', views.home),
 
 ]

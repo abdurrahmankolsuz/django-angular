@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../services/categoryService';
-import { PostService } from '../services/postService';
 import { Post } from '../entities/post';
-import { Tag } from '../entities/tag';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -17,43 +15,40 @@ import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
     moduleId: module.id,
-    selector: 'categories',
-    templateUrl: './category.component.html',
-    providers: [CategoryService, PostService]
+    selector: 'tag-post',
+    templateUrl: './tag-post.component.html',
+    providers: [CategoryService]
+
 })
-export class CategoryComponent implements OnInit {
+export class TagPostComponent implements OnInit {
     error: any;
-    tags: Tag[];
     posts: Observable<Post[]>;
     errorMessage: string;
     private sub: Subscription;
- 
-    constructor(private route: ActivatedRoute,
-        private router: Router,private categoryService: CategoryService, private postService: PostService) {
-        this.categoryService
-            .getCategories().subscribe(tags => {
-                this.tags = tags;
-            });
-    }
+    tag: string;
 
-   getPostByTag(tag: string) {
+    
+    constructor(private route: ActivatedRoute,
+        private router: Router,private categoryService: CategoryService) {
+    
+    }
+    getPostByTag(tag: string) {
         this.categoryService.getPostByTag(tag).subscribe(
             posts => this.posts = posts,
             error => this.errorMessage = <any>error);
             
     }
 
-    ngOnInit() :void {
-        //    this.sub = this.route.params.subscribe(
-        //     params => {
-        //         let tag = params['tag'];
-        //         debugger;
-        //         this.getPostByTag(tag);
-        //     });
+    ngOnInit() : void {
+           this.sub = this.route.params.subscribe(
+            params => {
+                this.tag = params['tag'];
+                debugger;
+                this.getPostByTag(this.tag);
+            });
     }
 
-    
     ngOnDestroy() {
-        //this.sub.unsubscribe();
+        this.sub.unsubscribe();
     }
 }

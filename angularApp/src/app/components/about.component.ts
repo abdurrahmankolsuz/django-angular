@@ -12,19 +12,19 @@ declare var jQuery: any;
 export class AboutComponent implements AfterViewInit,OnInit {
     error: any;
     about: Array <About>;
-        constructor(private aboutService: AboutService) {}
-
-  ngAfterViewInit(): any {
-        jQuery("#menu-toggle").click(function (e) {
-            e.preventDefault();
-            jQuery("#wrapper").toggleClass("toggled");
-        });
-    }
+    constructor(private aboutService: AboutService) {}
+ 
     ngOnInit() {
           this.aboutService
             .getAbout().subscribe(about => {
                 this.about = about;
             });
+    }
+     ngAfterViewInit(): any {
+        jQuery("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            jQuery("#wrapper").toggleClass("toggled");
+        });
     }
   
 }

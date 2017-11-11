@@ -5,32 +5,24 @@
       </button>
     </div>
 </div>
-
-<div class="well" *ngIf="post">
-
-    <div class="panel-body">
-        <h2>
-            <a href="" class="noneunderline">{{post.title}}</a>
-        </h2>
-        <!--<p class="lead">
-            by <a class="noneunderline" href="">Start Bootstrap</a>
-        </p>-->
-        <!--tags-->
-        <p><span class="glyphicon glyphicon-calendar"></span> Posted on {{post.created_date | date:'fullDate'}}</p>
-        <div>
-            <ul class="tags" *ngFor="let tag of post.tags" style="display: inline">
-                <li><a href="#" class="tag">{{tag}}</a></li>
-            </ul>
-        </div>
-        <br>
-
-
-        <hr>
-        <p [innerHTML]="post.content"></p>
-        <hr>
-        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+<!--<div class="well" >-->
+<div class="panel-body" *ngIf="post">
+    <h2>
+        <a [routerLink]="['../',post.slug]" class="noneunderline">{{post.title}}</a>
+    </h2>
+    <p><span class="glyphicon glyphicon-calendar"></span> Posted on {{post.created_date | date:'fullDate'}}</p>
+    <div>
+        <ul class="tags" *ngFor="let tag of post.tags" style="display: inline">
+            <li><a [routerLink]="['../tags',tag]" routerLinkActive="active" class="tag">{{tag}}</a></li>
+        </ul>
     </div>
+    <br>
+    <hr>
+    <div class="well" style="background-color:white;" [innerHTML]="post.content"></div>
+    <hr>
+    <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
 </div>
+<!--</div>-->
 <div class="well" style="background-color:white;">
     <disqus-thread [page-identifier]="'post.slug'" [page-url]="'http://localhost:3000'"></disqus-thread>
 </div>

@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.contrib.auth.models import User, Group
 from .models import Post
 from .models import About
+from taggit.models import Tag
 from rest_framework import viewsets
 from rest_framework.generics import ListCreateAPIView
 from django.http import HttpResponse
@@ -10,7 +11,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import permissions
-from .serializers import UserSerializer, GroupSerializer ,PostSerializer,AboutSerializer
+from .serializers import UserSerializer, GroupSerializer ,PostSerializer,AboutSerializer,TagSerializer
 from taggit_serializer.serializers import (TagListSerializerField,TaggitSerializer)
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -62,6 +63,17 @@ def post_list(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET', 'POST'])
+@permission_classes((permissions.AllowAny,))
+def tag_list(request):
+    """
+    List all code snippets, or create a new snippet.
+    """
+    if request.method == 'GET':
+        tags = Tag.objects.all()
+        serializer = TagSerializer(tags, many=True)
+        return Response(serializer.data)
+
 
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes((permissions.AllowAny,))
@@ -89,6 +101,23 @@ def post_detail(request, slug):
         post.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
         
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes((permissions.AllowAny,))
+def tag_filter(request, slug):
+    """
+    Retrieve, update or delete a code snippet.
+    """
+    try:
+        post = Post.objects.all().filter(tags__slug__in=[slug]).distinct()
+    except Post.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = PostSerializer(post, many=True)
+        return Response(serializer.data)
+
 
 class GroupViewSet(viewsets.ModelViewSet):
     """

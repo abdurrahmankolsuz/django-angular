@@ -47,8 +47,3 @@ export class PostDetailComponent implements OnInit, OnDestroy {
 
 
 }
-// interface Post {
-//     title: string;
-//     body: string;
-//     id: number;
-// }

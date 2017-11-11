@@ -20,6 +20,7 @@ import { PageContentWrapperComponent } from './components/page-content-wrapper.c
 import { SidebarWrapperComponent } from './components/sidebar-wrapper.component';
 
 import { SocialComponent } from './components/social.component';
+import { TagPostComponent } from './components/tag-post.component';
 
 import { PostService } from './services/postService'
 import { CategoryService } from './services/categoryService'
@@ -31,6 +32,7 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     AppComponent,PostComponent ,CategoryComponent,
+    TagPostComponent,
     AboutComponent,PageContentWrapperComponent,
     SidebarWrapperComponent,SocialComponent,SearchComponent,
     ContainerComponent,PostDetailComponent,FilterPipe
